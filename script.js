@@ -117,7 +117,8 @@ $(document).ready(function () {
 <script>
   // Initialize EmailJS
   (function () {
-    emailjs.init("EvDRkkRD6nYulGpbY"); // Replace with your actual EmailJS public key
+      emailjs.init("EvDRkkRD6nYulGpbY");
+// Replace with your actual EmailJS public key
   })();
 
   // Handle form submission
