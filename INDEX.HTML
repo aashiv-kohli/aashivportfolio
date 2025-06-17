@@ -231,52 +231,39 @@ Holochat is a next-generation social media platform designed for seamless, real-
     </section>
 
     <!-------------------------- Contact Me -------------------------->
- <section class="contact-content" id="contact">
-    <div class="container">
-      <div class="contact-title">
-        <h4 style="color: yellow; font-size: 2em;">Contact Me</h4>
-        <p>Get In Touch</p>
-      </div>
-      <div class="contact">
-        <form id="contact-form">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <input type="text" name="title" placeholder="Subject" required />
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <input type="submit" value="Send Message" class="submit" />
-        </form>
-        <span id="msg"></span>
-      </div>
-    </div>
+
+
+<section id="contact">
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="title" placeholder="Subject" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message" />
+    </form>
+    <span id="msg"></span>
   </section>
 
-  <!-- EmailJS Script -->
+  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function () {
-      emailjs.init("EvDRkkRD6nYulGpbY"); // ✅ Your actual public key
+      emailjs.init("EvDRkkRD6nYulGpbY"); 
     })();
 
-    // Submit handler
     const form = document.getElementById("contact-form");
-    const msg = document.getElementById("msg");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-
-    emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
-  .then(() => {
-    window.location.href = "success.html"; // Redirect on success
-  })
-  .catch((error) => {
-    msg.innerHTML = "❌ Message failed to send.";
-    msg.style.color = "red";
-    console.error("EmailJS Error:", error);
-  });
-
-  </script>
-</body>
- 
+      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
+        .then(() => {
+          window.location.href = "success.html"; // Redirect to success page
+        })
+        .catch((error) => {
+          alert("❌ Message failed to send.");
+          console.error("EmailJS Error:", error);
+        });
+    });
 
 
     <!-------------------------- JS -------------------------->
