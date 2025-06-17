@@ -231,59 +231,58 @@ Holochat is a next-generation social media platform designed for seamless, real-
     </section>
 
     <!-------------------------- Contact Me -------------------------->
+ <section class="contact-content" id="contact">
+    <div class="container">
+      <div class="contact-title">
+        <h4 style="color: yellow; font-size: 2em;">Contact Me</h4>
+        <p>Get In Touch</p>
+      </div>
+      <div class="contact">
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="text" name="title" placeholder="Subject" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <input type="submit" value="Send Message" class="submit" />
+        </form>
+        <span id="msg"></span>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact-content" id="contact">
-  <div class="container">
-    <div class="contact-title">
-      <h4>Contact Me</h4>
-      <p>Get In Touch</p>
-    </div>
-    <div class="contact">
-      <form name="submitToGoogleSheet" id="contact-form">
-        <input type="text" name="NAME" placeholder="Name" required />
-        <input type="email" name="EMAIL" placeholder="Email" required />
-        <input type="text" name="SUBJECT" placeholder="Subject" />
-        <textarea name="MESSAGE" placeholder="Message" required></textarea>
-        <input type="submit" value="Send Message" class="submit" id="sendBtn" />
-      </form>
-      <span id="msg"></span>
-    </div>
-  </div>
-</section>
+  <!-- EmailJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("EvDRkkRD6nYulGpbY"); // ✅ Your actual public key
+    })();
+
+    // Submit handler
+    const form = document.getElementById("contact-form");
+    const msg = document.getElementById("msg");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
+        .then(() => {
+          msg.innerHTML = "✅ Message sent successfully!";
+          msg.style.color = "green";
+          form.reset();
+        })
+        .catch((error) => {
+          msg.innerHTML = "❌ Message failed to send.";
+          msg.style.color = "red";
+          console.error("EmailJS Error:", error);
+        });
+    });
+  </script>
+</body>
+ 
 
 
     <!-------------------------- JS -------------------------->
-    <script
-      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  // Initialize EmailJS with your public key
-  (function () {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your public key
-  })();
-
-  // Handle form submission
-  const form = document.forms['submitToGoogleSheet'];
-  const msg = document.getElementById('msg');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-      .then(function () {
-        msg.innerHTML = "Message sent successfully!";
-        msg.style.color = "green";
-        form.reset();
-      }, function (error) {
-        msg.innerHTML = "Message failed to send.";
-        msg.style.color = "red";
-        console.error('FAILED...', error);
-      });
-  });
-</script>
-
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+  
     <script src="script.js"></script>
 
     <!-------------------------- Footer section -------------------------->
