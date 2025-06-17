@@ -122,23 +122,39 @@ $(document).ready(function () {
   })();
 
   // Handle form submission
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+//   document.getElementById("contact-form").addEventListener("submit", function (e) {
+//     e.preventDefault();
 
-// emailjs.send("service_fw72g1f","template_u3k9nee");
-      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", form)
+// // emailjs.send("service_fw72g1f","template_u3k9nee");
+//       emailjs.sendForm("service_fw72g1f", "template_u3k9nee", form)
 
-      .then(() => {
-        document.getElementById("msg").innerHTML = "Message sent successfully!";
-        document.getElementById("msg").style.color = "green";
-        this.reset();
-      })
-      .catch((error) => {
-        document.getElementById("msg").innerHTML = "Message failed to send!";
-        document.getElementById("msg").style.color = "red";
-        console.error("FAILED...", error);
-      });
-  });
+//       .then(() => {
+//         document.getElementById("msg").innerHTML = "Message sent successfully!";
+//         document.getElementById("msg").style.color = "green";
+//         this.reset();
+//       })
+//       .catch((error) => {
+//         document.getElementById("msg").innerHTML = "Message failed to send!";
+//         document.getElementById("msg").style.color = "red";
+//         console.error("FAILED...", error);
+//       });
+//   });
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
+    .then(() => {
+      document.getElementById("msg").innerHTML = "Message sent successfully!";
+      document.getElementById("msg").style.color = "green";
+      this.reset();
+    })
+    .catch((error) => {
+      document.getElementById("msg").innerHTML = "Message failed to send.";
+      document.getElementById("msg").style.color = "red";
+      console.error("EmailJS Error:", error);
+    });
+});
+
 </script>
 
    
