@@ -113,47 +113,25 @@ $(document).ready(function () {
       }
     });
   }
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  // Initialize EmailJS
-  (function () {
-      emailjs.init("EvDRkkRD6nYulGpbY");
-// Replace with your actual EmailJS public key
-  })();
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("EvDRkkRD6nYulGpbY"); 
+    })();
 
-  // Handle form submission
-//   document.getElementById("contact-form").addEventListener("submit", function (e) {
-//     e.preventDefault();
+    const form = document.getElementById("contact-form");
 
-// // emailjs.send("service_fw72g1f","template_u3k9nee");
-//       emailjs.sendForm("service_fw72g1f", "template_u3k9nee", form)
-
-//       .then(() => {
-//         document.getElementById("msg").innerHTML = "Message sent successfully!";
-//         document.getElementById("msg").style.color = "green";
-//         this.reset();
-//       })
-//       .catch((error) => {
-//         document.getElementById("msg").innerHTML = "Message failed to send!";
-//         document.getElementById("msg").style.color = "red";
-//         console.error("FAILED...", error);
-//       });
-//   });
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
-    .then(() => {
-      document.getElementById("msg").innerHTML = "Message sent successfully!";
-      document.getElementById("msg").style.color = "green";
-      this.reset();
-    })
-    .catch((error) => {
-      document.getElementById("msg").innerHTML = "Message failed to send.";
-      document.getElementById("msg").style.color = "red";
-      console.error("EmailJS Error:", error);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
+        .then(() => {
+          window.location.href = "success.html"; // Redirect to success page
+        })
+        .catch((error) => {
+          alert("❌ Message failed to send.");
+          console.error("EmailJS Error:", error);
+        });
     });
-});
 
 </script>
 
