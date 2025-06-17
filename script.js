@@ -125,7 +125,9 @@ $(document).ready(function () {
   document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-emailjs.send("service_fw72g1f","template_u3k9nee");
+// emailjs.send("service_fw72g1f","template_u3k9nee");
+      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", form)
+
       .then(() => {
         document.getElementById("msg").innerHTML = "Message sent successfully!";
         document.getElementById("msg").style.color = "green";
