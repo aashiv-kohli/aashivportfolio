@@ -117,14 +117,14 @@ $(document).ready(function () {
 <script>
   // Initialize EmailJS
   (function () {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
+    emailjs.init("EvDRkkRD6nYulGpbY"); // Replace with your actual EmailJS public key
   })();
 
   // Handle form submission
   document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+emailjs.send("service_fw72g1f","template_u3k9nee");
       .then(() => {
         document.getElementById("msg").innerHTML = "Message sent successfully!";
         document.getElementById("msg").style.color = "green";
