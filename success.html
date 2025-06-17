@@ -3,82 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Message Sent</title>
+  <title>Success</title>
   <style>
     body {
-      background: #111;
-      color: white;
+      background-color: #f0fff4;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-    .checkmark {
+    .tick {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      display: block;
-      stroke-width: 2;
-      stroke: #4CAF50;
-      stroke-miterlimit: 10;
-      box-shadow: inset 0px 0px 0px #4CAF50;
-      animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-      margin-bottom: 20px;
+      border: 5px solid #4CAF50;
+      position: relative;
+      animation: pop 0.5s ease forwards;
     }
-    .checkmark__circle {
-      stroke-dasharray: 166;
-      stroke-dashoffset: 166;
-      stroke-width: 2;
-      stroke-miterlimit: 10;
-      stroke: #4CAF50;
-      fill: none;
-      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    .tick::after {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 10px;
+      width: 25px;
+      height: 50px;
+      border-right: 5px solid #4CAF50;
+      border-bottom: 5px solid #4CAF50;
+      transform: rotate(45deg);
+      animation: draw 0.5s 0.5s ease forwards;
+      opacity: 0;
     }
-    .checkmark__check {
-      transform-origin: 50% 50%;
-      stroke-dasharray: 48;
-      stroke-dashoffset: 48;
-      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
-    }
-
-    @keyframes stroke {
-      100% {
-        stroke-dashoffset: 0;
+    @keyframes draw {
+      to {
+        opacity: 1;
       }
     }
-    @keyframes scale {
-      0%, 100% {
-        transform: none;
+    @keyframes pop {
+      from {
+        transform: scale(0);
       }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-    @keyframes fill {
-      100% {
-        box-shadow: inset 0px 0px 0px 30px #4CAF50;
+      to {
+        transform: scale(1);
       }
     }
-
     h2 {
-      font-size: 24px;
-      margin-top: 10px;
+      margin-top: 20px;
+      color: #2e7d32;
     }
     p {
-      font-size: 16px;
-      color: #ccc;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <svg class="checkmark" viewBox="0 0 52 52">
-    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-  </svg>
+  <div class="tick"></div>
   <h2>Message Sent Successfully</h2>
-  <p>Thank you for contacting me. I’ll get back to you soon.</p>
+  <p>Thank you! I will get back to you soon.</p>
 </body>
 </html>
