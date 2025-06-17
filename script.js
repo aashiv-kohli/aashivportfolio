@@ -113,5 +113,30 @@ $(document).ready(function () {
       }
     });
   }
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS
+  (function () {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
+  })();
+
+  // Handle form submission
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+      .then(() => {
+        document.getElementById("msg").innerHTML = "Message sent successfully!";
+        document.getElementById("msg").style.color = "green";
+        this.reset();
+      })
+      .catch((error) => {
+        document.getElementById("msg").innerHTML = "Message failed to send!";
+        document.getElementById("msg").style.color = "red";
+        console.error("FAILED...", error);
+      });
+  });
+</script>
+
    
   
