@@ -113,27 +113,31 @@ $(document).ready(function () {
       }
     });
   }
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- Load EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <!-- Script to handle form -->
   <script>
-    (function () {
-      emailjs.init("EvDRkkRD6nYulGpbY"); 
-    })();
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("EvDRkkRD6nYulGpbY"); // Your EmailJS user ID
 
-    const form = document.getElementById("contact-form");
+      const form = document.getElementById("contact-form");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
-        .then(() => {
-          window.location.href = "success.html"; // Redirect to success page
-        })
-        .catch((error) => {
-          alert("❌ Message failed to send.");
-          console.error("EmailJS Error:", error);
-        });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm("service_fw72g1f", "template_u3k9nee", this)
+          .then(() => {
+            // Redirect to success page
+            window.location.href = "success.html";
+          })
+          .catch((error) => {
+            alert("❌ Message failed to send.");
+            console.error("EmailJS Error:", error);
+          });
+      });
     });
-
-</script>
+  </script>
 
    
   
