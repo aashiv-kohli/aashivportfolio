@@ -368,7 +368,7 @@ profile-photo .img {
 }
 
 /*---------------------------Contact Me---------------------------*/
-.contact-content {
+/* .contact-content {
   padding: 100px 0;
   color: #fff;
   text-align: center;
@@ -410,8 +410,12 @@ profile-photo .img {
   font-size: 20px;
   margin-top: -8px;
   display: block;
-}
+} */
 
+body { background: #111; color: white; font-family: sans-serif; text-align: center; }
+    input, textarea { display: block; margin: 10px auto; padding: 10px; width: 80%; border: none; border-radius: 4px; }
+    .submit { background: yellow; color: black; font-weight: bold; cursor: pointer; }
+    #msg { margin-top: 10px; display: block; font-weight: bold; }
 /*---------------------------Footer---------------------------*/
 .footer {
   max-width: 950px;
